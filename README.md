@@ -25,3 +25,25 @@ Step 1: Start a new Ubuntu Linux server instance on Amazon EC2
    ssh -i ItemCatalog_19_01_2019.pem ubuntu@54.161.86.157
    
    22 is Port by Default,Later we need to change it to 2200 as per the udacity-linux-server-configuration rubrics.
+
+
+# Secure Server
+
+Step 2: Update and upgrade installed packages
+   sudo apt-get update
+   
+   sudo apt-get upgrade
+   
+Step 3: Change the SSH port from 22 to 2200
+
+   Edit the /etc/ssh/sshd_config file: sudo vi /etc/ssh/sshd_config.
+   
+   Change the port number on line 5 from 22 to 2200.
+   
+   Save and exit using esc and confirm with :wq.
+   
+   Restart SSH: sudo service ssh restart.
+   
+   Change inbound rules in Amazon EC2 --> Type : Custom TCP Rule as 2200
+
+   To check port 2200 wether working or not by ssh -i ItemCatalog_19_01_2019.pem -p 2200 ubuntu@54.161.86.157
